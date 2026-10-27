@@ -1,0 +1,123 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="dota-models" name="Модели БД">
+    <mxGraphModel dx="1984" dy="1145" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1250" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c_user" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=14" value="Пользователь" vertex="1">
+          <mxGeometry height="55" width="150" x="100" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="c_match" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=14" value="Матч" vertex="1">
+          <mxGeometry height="55" width="150" x="390" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="c_perf" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=14" value="Участие игрока в матче&#xa;(статистика и результат)" vertex="1">
+          <mxGeometry height="75" width="220" x="700" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="c_hero" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=14" value="Герой" vertex="1">
+          <mxGeometry height="55" width="150" x="1070" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="c_item" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;fontSize=14" value="Предмет" vertex="1">
+          <mxGeometry height="55" width="150" x="1440" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="ce1" edge="1" parent="1" source="c_user" style="endArrow=none;html=1;fontSize=12" target="c_match" value="добавляет">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ce2" edge="1" parent="1" source="c_match" style="endArrow=none;html=1;fontSize=12" target="c_perf" value="содержит">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ce3" edge="1" parent="1" source="c_perf" style="endArrow=none;html=1;fontSize=12" target="c_hero" value="выбранный герой">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ce4" edge="1" parent="1" source="wCjq2kL4zrFlM1OQOCph-3" style="endArrow=none;html=1;fontSize=12" target="c_item" value="собранные предметы">
+          <mxGeometry relative="1" x="0.3692" y="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="l_user" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;align=left;spacingLeft=8;fontSize=12" value="USER&#xa;PK UserId&#xa;Username (уникальный)&#xa;PasswordHash&#xa;Role (Admin / User)&#xa;CreatedAt" vertex="1">
+          <mxGeometry height="150" width="220" x="80" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="l_match" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;align=left;spacingLeft=8;fontSize=12" value="MATCH&#xa;PK MatchId&#xa;FK UserId&#xa;PlayedAt&#xa;DurationSeconds&#xa;Result (Win / Loss)&#xa;Notes (необязательно)" vertex="1">
+          <mxGeometry height="165" width="230" x="390" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="l_perf" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;align=left;spacingLeft=8;fontSize=12" value="MATCH_PLAYER&#xa;PK MatchPlayerId&#xa;FK MatchId, FK HeroId&#xa;Role, IsWin&#xa;Kills, Deaths, Assists&#xa;Gpm, Xpm&#xa;HeroDamage, TowerDamage&#xa;PerformanceScore (0–100)&#xa;IsGameMvp" vertex="1">
+          <mxGeometry height="205" width="250" x="700" y="375" as="geometry" />
+        </mxCell>
+        <mxCell id="l_hero" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;align=left;spacingLeft=8;fontSize=12" value="HERO&#xa;PK HeroId&#xa;Name (уникальный)&#xa;LocalizedName&#xa;IsActive" vertex="1">
+          <mxGeometry height="130" width="210" x="1040" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="l_item" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;align=left;spacingLeft=8;fontSize=12" value="ITEM&#xa;PK ItemId&#xa;Name (уникальный)&#xa;LocalizedName" vertex="1">
+          <mxGeometry height="110" width="190" x="1340" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="l_perfitem" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;align=left;spacingLeft=8;fontSize=12" value="MATCH_PLAYER_ITEM&#xa;PK MatchPlayerItemId&#xa;FK MatchPlayerId&#xa;FK ItemId&#xa;SlotNumber" vertex="1">
+          <mxGeometry height="115" width="230" x="1050" y="555" as="geometry" />
+        </mxCell>
+        <mxCell id="le1" edge="1" parent="1" source="l_user" style="endArrow=ERmany;startArrow=ERone;html=1;fontSize=12" target="l_match" value="1 — N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="le2" edge="1" parent="1" source="l_match" style="endArrow=ERmany;startArrow=ERone;html=1;fontSize=12" target="l_perf" value="1 — N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="le3" edge="1" parent="1" source="l_hero" style="endArrow=ERmany;startArrow=ERone;html=1;fontSize=12" target="l_perf" value="1 — N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="le4" edge="1" parent="1" source="l_perf" style="endArrow=ERmany;startArrow=ERone;html=1;fontSize=12" target="l_perfitem" value="1 — N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="le5" edge="1" parent="1" source="l_item" style="endArrow=ERmany;startArrow=ERone;html=1;fontSize=12" target="l_perfitem" value="1 — N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p_user" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b85450;align=left;spacingLeft=8;fontSize=12" value="dbo.Users&#xa;UserId int IDENTITY PK&#xa;Username nvarchar(50) UNIQUE&#xa;PasswordHash nvarchar(255)&#xa;Role nvarchar(10) CHECK&#xa;CreatedAt datetime2" vertex="1">
+          <mxGeometry height="155" width="235" x="70" y="805" as="geometry" />
+        </mxCell>
+        <mxCell id="p_match" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b85450;align=left;spacingLeft=8;fontSize=12" value="dbo.Matches&#xa;MatchId int IDENTITY PK&#xa;UserId int FK&#xa;PlayedAt datetime2&#xa;DurationSeconds int&#xa;Result nvarchar(4) CHECK&#xa;Notes nvarchar(500) NULL" vertex="1">
+          <mxGeometry height="155" width="240" x="365" y="805" as="geometry" />
+        </mxCell>
+        <mxCell id="p_perf" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b85450;align=left;spacingLeft=8;fontSize=12" value="dbo.MatchPlayers&#xa;MatchPlayerId int IDENTITY PK&#xa;MatchId int FK; HeroId int FK&#xa;Role nvarchar(20)&#xa;IsWin bit&#xa;Kills/Deaths/Assists int&#xa;Gpm/Xpm int&#xa;HeroDamage/TowerDamage int&#xa;PerformanceScore tinyint NULL&#xa;IsGameMvp bit" vertex="1">
+          <mxGeometry height="205" width="280" x="680" y="790" as="geometry" />
+        </mxCell>
+        <mxCell id="p_hero" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b85450;align=left;spacingLeft=8;fontSize=12" value="dbo.Heroes&#xa;HeroId int IDENTITY PK&#xa;Name nvarchar(80) UNIQUE&#xa;LocalizedName nvarchar(80)&#xa;IsActive bit" vertex="1">
+          <mxGeometry height="125" width="225" x="1040" y="805" as="geometry" />
+        </mxCell>
+        <mxCell id="p_item" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b85450;align=left;spacingLeft=8;fontSize=12" value="dbo.Items&#xa;ItemId int IDENTITY PK&#xa;Name nvarchar(80) UNIQUE&#xa;LocalizedName nvarchar(80)" vertex="1">
+          <mxGeometry height="110" width="220" x="1330" y="805" as="geometry" />
+        </mxCell>
+        <mxCell id="p_perfitem" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#b85450;align=left;spacingLeft=8;fontSize=12" value="dbo.MatchPlayerItems&#xa;MatchPlayerItemId int IDENTITY PK&#xa;MatchPlayerId int FK&#xa;ItemId int FK&#xa;SlotNumber tinyint&#xa;UNIQUE(MatchPlayerId, SlotNumber)" vertex="1">
+          <mxGeometry height="145" width="265" x="1040" y="1000" as="geometry" />
+        </mxCell>
+        <mxCell id="pe1" edge="1" parent="1" source="p_user" style="endArrow=ERmany;startArrow=ERone;html=1;fontSize=11" target="p_match" value="FK">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pe2" edge="1" parent="1" source="p_match" style="endArrow=ERmany;startArrow=ERone;html=1;fontSize=11" target="p_perf" value="FK">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pe3" edge="1" parent="1" source="p_hero" style="endArrow=ERmany;startArrow=ERone;html=1;fontSize=11" target="p_perf" value="FK">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pe4" edge="1" parent="1" source="p_perf" style="endArrow=ERmany;startArrow=ERone;html=1;fontSize=11" target="p_perfitem" value="FK">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pe5" edge="1" parent="1" source="p_item" style="endArrow=ERmany;startArrow=ERone;html=1;fontSize=11" target="p_perfitem" value="FK">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wCjq2kL4zrFlM1OQOCph-1" parent="1" style="rhombus;whiteSpace=wrap;html=1;shapeInside=1;opacity=50;opacityGroup=1;" value="" vertex="1">
+          <mxGeometry height="80" width="80" x="280" y="148" as="geometry" />
+        </mxCell>
+        <mxCell id="wCjq2kL4zrFlM1OQOCph-2" parent="1" style="rhombus;whiteSpace=wrap;html=1;shapeInside=1;opacity=50;opacityGroup=1;" value="" vertex="1">
+          <mxGeometry height="80" width="80" x="580" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="wCjq2kL4zrFlM1OQOCph-4" edge="1" parent="1" source="c_perf" style="endArrow=none;html=1;fontSize=12" target="wCjq2kL4zrFlM1OQOCph-3" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="920" y="188" as="sourcePoint" />
+            <mxPoint x="1360" y="188" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wCjq2kL4zrFlM1OQOCph-3" parent="1" style="rhombus;whiteSpace=wrap;html=1;shapeInside=1;opacity=50;opacityGroup=1;" value="" vertex="1">
+          <mxGeometry height="90" width="130" x="930" y="145" as="geometry" />
+        </mxCell>
+        <mxCell id="wCjq2kL4zrFlM1OQOCph-7" parent="1" style="rhombus;whiteSpace=wrap;html=1;shapeInside=1;opacity=50;opacityGroup=1;" value="" vertex="1">
+          <mxGeometry height="110" width="160" x="1240" y="135" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
