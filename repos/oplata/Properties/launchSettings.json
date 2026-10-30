@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "oplata": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
