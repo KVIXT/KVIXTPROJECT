@@ -1,0 +1,1 @@
+steam_id = Convert.ToInt64(dt.Rows[0]["steam_id"]),
